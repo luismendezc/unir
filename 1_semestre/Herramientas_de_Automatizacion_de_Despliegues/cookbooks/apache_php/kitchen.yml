@@ -1,0 +1,25 @@
+# .kitchen.yml
+---
+driver:
+  name: vagrant
+  custom_vagrantfile: Vagrantfile.custom
+
+provisioner:
+  name: chef_zero
+  product_name: chef
+  product_version: latest
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-20.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[apache_php::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:

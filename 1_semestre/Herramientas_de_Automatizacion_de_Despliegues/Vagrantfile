@@ -1,0 +1,29 @@
+Vagrant.configure("2") do |config|
+  # Seleccionamos la caja oficial de Ubuntu 20.04
+  config.vm.box = "ubuntu/focal64"
+
+  # Aumentar memoria y CPUs para que Jenkins funcione correctamente
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 2
+  end
+
+  # Configuración de red: reenvío de puertos
+  config.vm.network "forwarded_port", guest: 80,   host: 8080   # Apache/PHP
+  config.vm.network "forwarded_port", guest: 3306, host: 3306, auto_correct: true  # MySQL
+  config.vm.network "forwarded_port", guest: 8080, host: 8081   # Jenkins
+
+  # Sincronización de carpetas: para que cookbooks estén dentro de la VM
+  config.vm.synced_folder "./cookbooks", "/home/vagrant/cookbooks"
+
+  # Provisión con Chef Solo (incluimos las recetas en el run_list)
+  config.vm.provision "chef_solo" do |chef|
+    chef.cookbooks_path = "./cookbooks"
+    # Aquí decidimos en qué orden se aplicarán los cookbooks/recetas
+    chef.add_recipe "apache_php::default"
+    chef.add_recipe "mysql_server::default"
+    chef.add_recipe "jenkins::default"
+    # Acepta la licencia Chef automáticamente
+    chef.arguments = "--chef-license accept"
+  end
+end
