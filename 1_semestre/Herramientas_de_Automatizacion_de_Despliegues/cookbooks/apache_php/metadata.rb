@@ -3,7 +3,7 @@ maintainer 'The Authors'
 maintainer_email 'you@example.com'
 license 'All Rights Reserved'
 description 'Instala y configura Apache y PHP'
-long_description 'Installs/Configures apache_php'
+long_description 'Instala/Configura apache_php con apache y php'
 version '0.1.0'
 chef_version '>= 14.0'
 

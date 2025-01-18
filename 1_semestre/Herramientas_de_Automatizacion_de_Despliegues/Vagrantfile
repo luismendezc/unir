@@ -4,6 +4,7 @@ Vagrant.configure("2") do |config|
 
   # Aumentar memoria y CPUs para que Jenkins funcione correctamente
   config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
     vb.memory = 2048
     vb.cpus = 2
   end

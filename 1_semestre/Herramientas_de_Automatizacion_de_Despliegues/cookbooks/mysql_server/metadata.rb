@@ -3,7 +3,7 @@ maintainer 'The Authors'
 maintainer_email 'you@example.com'
 license 'All Rights Reserved'
 description 'Instala y configura MySQL'
-long_description 'Installs/Configures mysql_server'
+long_description 'Instala/Configura mysql_server con usuario y base de datos'
 version '0.1.0'
 chef_version '>= 14.0'
 

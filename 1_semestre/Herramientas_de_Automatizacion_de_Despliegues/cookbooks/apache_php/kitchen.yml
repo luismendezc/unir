@@ -2,7 +2,6 @@
 ---
 driver:
   name: vagrant
-  custom_vagrantfile: Vagrantfile.custom
 
 provisioner:
   name: chef_zero

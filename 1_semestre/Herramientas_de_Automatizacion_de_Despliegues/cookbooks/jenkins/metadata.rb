@@ -3,7 +3,7 @@ maintainer 'The Authors'
 maintainer_email 'you@example.com'
 license 'All Rights Reserved'
 description 'Instala y configura Jenkins'
-long_description 'Installs/Configures jenkins'
+long_description 'Installa/Configurea jenkins a partir de .deb 2.387.2'
 version '0.1.0'
 chef_version '>= 14.0'
 

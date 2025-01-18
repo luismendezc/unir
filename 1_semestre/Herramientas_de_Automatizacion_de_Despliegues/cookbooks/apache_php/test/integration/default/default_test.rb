@@ -22,7 +22,7 @@ describe package('libapache2-mod-php') do
 end
 
 describe file('/var/www/html/index.html') do
-  it { should_not exist }  # Tu receta elimina index.html
+  it { should_not exist }  
 end
 
 describe file('/var/www/html/index.php') do
