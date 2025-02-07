@@ -1,0 +1,11 @@
+---
+- name: Generar informacion de partido de Tennis
+  hosts: localhost
+  connection: local
+  become: yes
+  vars:
+    first_name: "Luis"
+    last_name: "Mendez"
+    city: "Puebla"
+  roles:
+    - match_generator

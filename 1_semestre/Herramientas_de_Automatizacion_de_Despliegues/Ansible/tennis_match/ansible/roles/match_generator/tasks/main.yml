@@ -1,0 +1,28 @@
+---
+- name: Leer ID de partido_vars.yml
+  include_vars:
+    file: "../vars/partido_vars.yml"
+
+- name: Obtener informacion para el segundo jugador
+  uri:
+    url: "https://random-data-api.com/api/users/random_user?size=1"
+    return_content: yes
+  register: json_response
+
+- name: Generar partido.txt
+  copy:
+    dest: "/vagrant/partido.txt"
+    content: |
+      ** INFORMACION DEL PARTIDO UNIR **
+
+      First Name: {{ first_name }}.
+      Last Name: {{ last_name }}.
+      City: {{ city }}.
+      id: {{ id }}.
+
+      First Name: {{ (json_response.json[0].first_name) }}.
+      Last Name: {{ (json_response.json[0].last_name) }}.
+      City: {{ (json_response.json[0].address.city) }}.
+      id: {{ (json_response.json[0].id) }}.
+
+      Fecha: {{ ansible_date_time.iso8601 }}.
