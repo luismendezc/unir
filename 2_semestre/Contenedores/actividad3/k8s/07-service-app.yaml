@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: actividad3-app
+  namespace: actividad3
+spec:
+  type: LoadBalancer
+  selector:
+    app: actividad3-app
+  ports:
+    - port: 80
+      targetPort: 3000
